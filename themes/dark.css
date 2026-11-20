@@ -1,0 +1,99 @@
+/*
+ * Theme "dark". Applies to any element with data-theme="dark", and to the page when the
+ * system asks for dark and no data-theme is set on <html>. Set data-theme="light" on
+ * <html> to keep a site light whatever the system says.
+ *
+ * The two blocks hold the same declarations: CSS can't share one block between a
+ * selector and a media query. The token checks fail if they drift apart.
+ */
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --surface: var(--palette-neutral-900);
+  --surface-raised: var(--palette-neutral-800);
+  --surface-sunken: var(--palette-neutral-950);
+
+  /* Text */
+  --text: var(--palette-neutral-50);
+  --text-muted: var(--palette-neutral-300);
+
+  /* Lines */
+  --border: var(--palette-neutral-700);
+  --border-strong: var(--palette-neutral-400);
+
+  /* Accent, from the brand layer */
+  --accent: var(--brand-accent-dark);
+  --accent-strong: var(--brand-accent-strong-dark);
+  --on-accent: var(--brand-on-accent-dark);
+  --accent-subtle: var(--brand-accent-subtle-dark);
+  --on-accent-subtle: var(--brand-accent-text-dark);
+  --link: var(--brand-accent-text-dark);
+  --link-hover: var(--text);
+  --focus-ring: var(--brand-accent-text-dark);
+
+  /* Status */
+  --danger: var(--palette-red-400);
+  --on-danger: var(--palette-neutral-950);
+  --danger-subtle: var(--palette-red-950);
+  --danger-text: var(--palette-red-300);
+  --success: var(--palette-green-400);
+  --on-success: var(--palette-neutral-950);
+  --success-subtle: var(--palette-green-950);
+  --success-text: var(--palette-green-300);
+  --warning: var(--palette-amber-400);
+  --on-warning: var(--palette-neutral-950);
+  --warning-subtle: var(--palette-amber-950);
+  --warning-text: var(--palette-amber-300);
+
+  /* Elevation: darker and wider, since a shadow barely shows on a dark page */
+  --card-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.5);
+  --overlay-shadow: 0 12px 24px -4px rgb(0 0 0 / 0.6), 0 4px 8px -2px rgb(0 0 0 / 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    /* Surfaces */
+    --surface: var(--palette-neutral-900);
+    --surface-raised: var(--palette-neutral-800);
+    --surface-sunken: var(--palette-neutral-950);
+
+    /* Text */
+    --text: var(--palette-neutral-50);
+    --text-muted: var(--palette-neutral-300);
+
+    /* Lines */
+    --border: var(--palette-neutral-700);
+    --border-strong: var(--palette-neutral-400);
+
+    /* Accent, from the brand layer */
+    --accent: var(--brand-accent-dark);
+    --accent-strong: var(--brand-accent-strong-dark);
+    --on-accent: var(--brand-on-accent-dark);
+    --accent-subtle: var(--brand-accent-subtle-dark);
+    --on-accent-subtle: var(--brand-accent-text-dark);
+    --link: var(--brand-accent-text-dark);
+    --link-hover: var(--text);
+    --focus-ring: var(--brand-accent-text-dark);
+
+    /* Status */
+    --danger: var(--palette-red-400);
+    --on-danger: var(--palette-neutral-950);
+    --danger-subtle: var(--palette-red-950);
+    --danger-text: var(--palette-red-300);
+    --success: var(--palette-green-400);
+    --on-success: var(--palette-neutral-950);
+    --success-subtle: var(--palette-green-950);
+    --success-text: var(--palette-green-300);
+    --warning: var(--palette-amber-400);
+    --on-warning: var(--palette-neutral-950);
+    --warning-subtle: var(--palette-amber-950);
+    --warning-text: var(--palette-amber-300);
+
+    /* Elevation: darker and wider, since a shadow barely shows on a dark page */
+    --card-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.5);
+    --overlay-shadow: 0 12px 24px -4px rgb(0 0 0 / 0.6), 0 4px 8px -2px rgb(0 0 0 / 0.4);
+  }
+}

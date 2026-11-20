@@ -1,0 +1,131 @@
+/*
+ * @a.incantalupo/design-tokens: palette, scale and brand.
+ *
+ * Layer 1, palette: raw colours, type sizes, spacing. Never used by components directly.
+ * Layer 2, brand: the accent a site overrides to rebrand (one block, light and dark values).
+ * Layer 3, roles: what components use. Colour roles and shadows live in the theme files
+ * (themes/light.css, themes/dark.css); the roles that are the same in every theme
+ * (fonts, radii, focus ring size) are at the end of this file.
+ *
+ * Every default sits under :where(:root), which has no specificity: your own
+ * `:root { --brand-accent: ... }` wins wherever it appears.
+ */
+:where(:root) {
+  /* 1. Palette */
+  --palette-white: #ffffff;
+  --palette-black: #000000;
+
+  /* neutral */
+  --palette-neutral-50: #f9fafc;
+  --palette-neutral-100: #f2f4f7;
+  --palette-neutral-200: #e3e6ec;
+  --palette-neutral-300: #cfd5dc;
+  --palette-neutral-400: #9aa2ae;
+  --palette-neutral-500: #6a7482;
+  --palette-neutral-600: #47515e;
+  --palette-neutral-700: #38404d;
+  --palette-neutral-800: #242b34;
+  --palette-neutral-900: #151a21;
+  --palette-neutral-950: #070a0f;
+
+  /* blue */
+  --palette-blue-50: #f0f5fe;
+  --palette-blue-100: #deeaff;
+  --palette-blue-200: #c6dafe;
+  --palette-blue-300: #a0c1fe;
+  --palette-blue-400: #6d9ffe;
+  --palette-blue-500: #3f80fe;
+  --palette-blue-600: #1e64ef;
+  --palette-blue-700: #0f52d4;
+  --palette-blue-800: #0b43ae;
+  --palette-blue-900: #123a8a;
+  --palette-blue-950: #0e2654;
+
+  /* red */
+  --palette-red-50: #fef2f1;
+  --palette-red-100: #fee2df;
+  --palette-red-200: #ffcbc5;
+  --palette-red-300: #fea69e;
+  --palette-red-400: #fa706a;
+  --palette-red-500: #e84545;
+  --palette-red-600: #d01c29;
+  --palette-red-700: #b31220;
+  --palette-red-800: #92131b;
+  --palette-red-900: #741e1e;
+  --palette-red-950: #491513;
+
+  /* green */
+  --palette-green-50: #eafaec;
+  --palette-green-100: #d3f4d8;
+  --palette-green-200: #afeaba;
+  --palette-green-300: #7fd994;
+  --palette-green-400: #46bc69;
+  --palette-green-500: #22a150;
+  --palette-green-600: #1c8742;
+  --palette-green-700: #1d7339;
+  --palette-green-800: #1a5d2f;
+  --palette-green-900: #1c4d29;
+  --palette-green-950: #15301b;
+
+  /* amber */
+  --palette-amber-50: #fffaf4;
+  --palette-amber-100: #fff1e0;
+  --palette-amber-200: #ffe5c4;
+  --palette-amber-300: #fece8c;
+  --palette-amber-400: #f3a504;
+  --palette-amber-500: #cd8b03;
+  --palette-amber-600: #a87102;
+  --palette-amber-700: #895c05;
+  --palette-amber-800: #6a4603;
+  --palette-amber-900: #593a02;
+  --palette-amber-950: #392401;
+
+  /* type scale (rem, so it follows the reader's font size) */
+  --type-xs: 0.75rem;
+  --type-sm: 0.875rem;
+  --type-base: 1rem;
+  --type-lg: 1.125rem;
+  --type-xl: 1.25rem;
+  --type-2xl: 1.5rem;
+  --type-3xl: 1.875rem;
+  --type-4xl: 2.25rem;
+  --type-leading-tight: 1.25;
+  --type-leading-normal: 1.5;
+  --type-leading-relaxed: 1.65;
+
+  /* spacing (a 4 px grid at the default font size) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* 2. Brand. Override these to rebrand; every accent role follows.
+     Light themes use the first five, dark themes the -dark five. Keep the pairs readable:
+     on-accent on accent 4.5:1, accent-text on every surface and on accent-subtle 7:1. */
+  --brand-accent: var(--palette-blue-700);
+  --brand-accent-strong: var(--palette-blue-800);
+  --brand-on-accent: var(--palette-white);
+  --brand-accent-subtle: var(--palette-blue-50);
+  --brand-accent-text: var(--palette-blue-800);
+
+  --brand-accent-dark: var(--palette-blue-400);
+  --brand-accent-strong-dark: var(--palette-blue-300);
+  --brand-on-accent-dark: var(--palette-neutral-950);
+  --brand-accent-subtle-dark: var(--palette-blue-950);
+  --brand-accent-text-dark: var(--palette-blue-300);
+
+  /* 3. Roles shared by every theme */
+  --body-font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --code-font: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  --control-radius: 0.375rem;
+  --card-radius: 0.5rem;
+  --pill-radius: 9999px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}

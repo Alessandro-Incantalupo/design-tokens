@@ -1,0 +1,49 @@
+/*
+ * Theme "light", the default. Applies to the page when no data-theme is set, and to any
+ * element with data-theme="light".
+ */
+:where(:root),
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --surface: var(--palette-neutral-50);
+  --surface-raised: var(--palette-white);
+  --surface-sunken: var(--palette-neutral-100);
+
+  /* Text */
+  --text: var(--palette-neutral-900);
+  --text-muted: var(--palette-neutral-600);
+
+  /* Lines */
+  --border: var(--palette-neutral-200);
+  --border-strong: var(--palette-neutral-500);
+
+  /* Accent, from the brand layer */
+  --accent: var(--brand-accent);
+  --accent-strong: var(--brand-accent-strong);
+  --on-accent: var(--brand-on-accent);
+  --accent-subtle: var(--brand-accent-subtle);
+  --on-accent-subtle: var(--brand-accent-text);
+  --link: var(--brand-accent-text);
+  --link-hover: var(--text);
+  --focus-ring: var(--brand-accent-text);
+
+  /* Status */
+  --danger: var(--palette-red-700);
+  --on-danger: var(--palette-white);
+  --danger-subtle: var(--palette-red-50);
+  --danger-text: var(--palette-red-800);
+  --success: var(--palette-green-700);
+  --on-success: var(--palette-white);
+  --success-subtle: var(--palette-green-50);
+  --success-text: var(--palette-green-800);
+  --warning: var(--palette-amber-400);
+  --on-warning: var(--palette-neutral-950);
+  --warning-subtle: var(--palette-amber-50);
+  --warning-text: var(--palette-amber-800);
+
+  /* Elevation */
+  --card-shadow: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.1);
+  --overlay-shadow: 0 12px 24px -4px rgb(16 24 40 / 0.12), 0 4px 8px -2px rgb(16 24 40 / 0.08);
+}
