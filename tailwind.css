@@ -1,0 +1,55 @@
+/*
+ * Tailwind CSS 4 bridge: turns the role tokens into utilities. Import it after
+ * tailwindcss and the tokens:
+ *
+ *   @import 'tailwindcss';
+ *   @import '@a.incantalupo/design-tokens';
+ *   @import '@a.incantalupo/design-tokens/tailwind.css';
+ *
+ * `inline` writes var(--surface) straight into each utility, so a data-theme on any
+ * element takes effect and Tailwind emits no second copy of the variables. The names on
+ * the left are Tailwind's; they never equal the token they read, which would make a
+ * variable that refers to itself.
+ *
+ * Only roles are bridged: the palette stays out of class names on purpose.
+ */
+@theme inline {
+  /* bg-*, border-*, ring-*, outline-*, fill-*... */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-on-accent: var(--on-accent);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-on-accent-subtle: var(--on-accent-subtle);
+  --color-focus-ring: var(--focus-ring);
+  --color-danger: var(--danger);
+  --color-on-danger: var(--on-danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-success: var(--success);
+  --color-on-success: var(--on-success);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-on-warning: var(--on-warning);
+  --color-warning-subtle: var(--warning-subtle);
+
+  /* text-* only: the text roles. text-danger is the readable red, bg-danger the fill. */
+  --text-color-default: var(--text);
+  --text-color-muted: var(--text-muted);
+  --text-color-link: var(--link);
+  --text-color-link-hover: var(--link-hover);
+  --text-color-danger: var(--danger-text);
+  --text-color-success: var(--success-text);
+  --text-color-warning: var(--warning-text);
+
+  --radius-control: var(--control-radius);
+  --radius-card: var(--card-radius);
+  --radius-pill: var(--pill-radius);
+  --shadow-card: var(--card-shadow);
+  --shadow-overlay: var(--overlay-shadow);
+  --font-body: var(--body-font);
+  --font-code: var(--code-font);
+}
