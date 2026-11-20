@@ -175,6 +175,22 @@ The table above comes from `pnpm contrast --markdown`.
 
 - **Add a theme**: create a `[data-theme='name']` block that sets every role `themes/light.css` sets. The repo's checks require this for the themes they ship.
 
+## Inverse surfaces
+
+An area in the other theme's colours, such as a dark call-to-action band on a light page, is an inverse surface:
+
+```html
+<section data-surface="inverse" class="bg-surface text-default">
+  <h2>Ready to start?</h2>
+  <a class="bg-accent text-on-accent rounded-control" href="/contact">Book a call</a>
+  <a class="border border-border-strong rounded-control" href="/cv.pdf">Download the CV</a>
+</section>
+```
+
+It re-sets every role inside it: on a light page it takes the dark theme's roles, on a dark page the light ones. Components inside keep the classes they use everywhere else, so a button copied from the hero stays readable. Don't make separate `on-band`-style roles for such an area: a component then has to know where it sits, and the one that doesn't is invisible.
+
+`surfaces.css` is generated from the two theme files (`pnpm tokens:build`), so its values are the ones the contrast check already covers. The main entry includes it; with your own imports, add `@import '@a.incantalupo/design-tokens/surfaces.css';` after the themes. "The page" is the theme on `<html>`, or the system's when `<html>` has no `data-theme`. Inside a section with its own `data-theme`, give the area an explicit `data-theme` instead.
+
 ## Contrast rules
 
 `pnpm contrast` resolves every role in every theme and checks each pair. It fails below these minimums:

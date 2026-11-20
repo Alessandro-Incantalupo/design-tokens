@@ -1,6 +1,6 @@
 {
   "name": "@a.incantalupo/design-tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-free design tokens as plain CSS custom properties: palette, brand accent and roles, light and dark themes, a Tailwind 4 bridge and a JSON export.",
   "keywords": [
     "design-tokens",
@@ -39,6 +39,10 @@
       "style": "./themes/*",
       "default": "./themes/*"
     },
+    "./surfaces.css": {
+      "style": "./surfaces.css",
+      "default": "./surfaces.css"
+    },
     "./tailwind.css": {
       "style": "./tailwind.css",
       "default": "./tailwind.css"
@@ -51,6 +55,7 @@
     "index.css",
     "tokens.css",
     "themes/*.css",
+    "surfaces.css",
     "tailwind.css",
     "tokens.json"
   ],

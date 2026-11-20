@@ -1,6 +1,6 @@
 # AGENTS.md
 
-A CSS-only package of design tokens. What ships: `index.css`, `tokens.css`, `themes/*.css`, `tailwind.css`, `tokens.json`. Everything in `scripts/` and `test/` is tooling and isn't published.
+A CSS-only package of design tokens. What ships: `index.css`, `tokens.css`, `themes/*.css`, `surfaces.css`, `tailwind.css`, `tokens.json`. Everything in `scripts/` and `test/` is tooling and isn't published.
 
 ## Rules
 
@@ -10,7 +10,8 @@ A CSS-only package of design tokens. What ships: `index.css`, `tokens.css`, `the
 - `themes/dark.css` has the same declarations twice: once under `[data-theme='dark']` and once in the `prefers-color-scheme` fallback. Edit both. The checks fail if they differ.
 - Defaults sit under `:where(:root)` so that site overrides win in any order. Keep it that way.
 - Colours are hex, so the contrast check can read them.
-- `tokens.json` is generated. After any CSS change, run `pnpm tokens:build`.
+- `tokens.json` and `surfaces.css` are generated. After any CSS change, run `pnpm tokens:build`.
+- An area in the other theme's colours is `data-surface="inverse"` (`surfaces.css`), which re-sets the roles. Never add `on-<area>` roles for it: components would have to know where they sit.
 
 ## Before you call a change done
 

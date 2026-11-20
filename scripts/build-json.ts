@@ -1,6 +1,6 @@
 /**
- * Writes tokens.json from the CSS. With --check, writes nothing and fails if
- * tokens.json differs from what the CSS gives (CI runs this).
+ * Writes the generated files from the CSS: tokens.json and surfaces.css. With --check,
+ * writes nothing and fails if either differs from what the CSS gives (CI runs this).
  *
  *   node scripts/build-json.ts [--check]
  */
@@ -8,9 +8,9 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { loadModel, validate } from './lib/model.ts';
 import { serializeJson, tokensJson } from './lib/report.ts';
+import { surfacesCss } from './lib/surfaces.ts';
 
 const root = resolve(import.meta.dirname, '..');
-const target = join(root, 'tokens.json');
 const check = process.argv.includes('--check');
 
 const model = loadModel(root);
@@ -20,20 +20,29 @@ if (problems.length) {
   process.exit(1);
 }
 
-const next = serializeJson(tokensJson(model));
-if (check) {
-  let current = '';
-  try {
-    current = readFileSync(target, 'utf8');
-  } catch {
-    // missing counts as out of date
+const outputs: [file: string, content: string][] = [
+  ['tokens.json', serializeJson(tokensJson(model))],
+  ['surfaces.css', surfacesCss(model)],
+];
+
+let stale = false;
+for (const [file, next] of outputs) {
+  const target = join(root, file);
+  if (check) {
+    let current = '';
+    try {
+      current = readFileSync(target, 'utf8');
+    } catch {
+      // missing counts as out of date
+    }
+    if (current !== next) {
+      console.error(`${file} is out of date with the CSS. Run: pnpm tokens:build`);
+      stale = true;
+    }
+  } else {
+    writeFileSync(target, next);
+    console.log(`Wrote ${file}.`);
   }
-  if (current !== next) {
-    console.error('tokens.json is out of date with the CSS. Run: pnpm tokens:build');
-    process.exit(1);
-  }
-  console.log('tokens.json matches the CSS.');
-} else {
-  writeFileSync(target, next);
-  console.log(`Wrote ${target.slice(root.length + 1)}.`);
 }
+if (stale) process.exit(1);
+if (check) console.log('tokens.json and surfaces.css match the CSS.');
